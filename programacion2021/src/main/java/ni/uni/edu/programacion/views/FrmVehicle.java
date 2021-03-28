@@ -244,7 +244,11 @@ public class FrmVehicle extends javax.swing.JFrame {
             pnlVSInfo = new PnlVehicleShowInfo();
             //try
             {
-                pnlVShowInfo = new PnlVehicleShowController(pnlVSInfo);
+                try {
+                    pnlVShowInfo = new PnlVehicleShowController(pnlVSInfo);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(FrmVehicle.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             /*catch (FileNotFoundException ex) {
                 Logger.getLogger(FrmVehicle.class.getName()).log(Level.SEVERE, null, ex);

@@ -54,6 +54,14 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
     public void setjTextFieldSearch(JTextField jTextFieldSearch) {
         this.jTextFieldSearch = jTextFieldSearch;
     }
+
+    public RSButtonMetro getBtnShowAll() {
+        return btnShowAll;
+    }
+
+    public void setBtnShowAll(RSButtonMetro btnShowAll) {
+        this.btnShowAll = btnShowAll;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,6 +79,7 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         CmbSearch = new javax.swing.JComboBox<>();
         jTextFieldSearch = new javax.swing.JTextField();
         btnSearch = new rsbuttom.RSButtonMetro();
+        btnShowAll = new rsbuttom.RSButtonMetro();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -98,11 +107,9 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         CmbSearch.setBackground(new java.awt.Color(204, 204, 204));
-        CmbSearch.setForeground(new java.awt.Color(204, 204, 204));
 
         jTextFieldSearch.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldSearch.setForeground(new java.awt.Color(102, 102, 102));
-        jTextFieldSearch.setText("¿Qué desea buscar?");
         jTextFieldSearch.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTextFieldSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +122,19 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         btnSearch.setColorHover(new java.awt.Color(153, 153, 153));
         btnSearch.setColorNormal(new java.awt.Color(204, 204, 204));
         btnSearch.setColorPressed(new java.awt.Color(153, 153, 153));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        btnShowAll.setBackground(new java.awt.Color(204, 204, 204));
+        btnShowAll.setForeground(new java.awt.Color(0, 0, 0));
+        btnShowAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
+        btnShowAll.setText("Mostrar Todo");
+        btnShowAll.setColorHover(new java.awt.Color(153, 153, 153));
+        btnShowAll.setColorNormal(new java.awt.Color(204, 204, 204));
+        btnShowAll.setColorPressed(new java.awt.Color(102, 102, 102));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -127,16 +147,23 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
                 .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnShowAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CmbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CmbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnShowAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -147,11 +174,17 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSearchActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        // Evento de para buscar el elemeento
+    }//GEN-LAST:event_btnSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CmbSearch;
     private javax.swing.JTable TableInfo;
     private rsbuttom.RSButtonMetro btnSearch;
+    private rsbuttom.RSButtonMetro btnShowAll;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
