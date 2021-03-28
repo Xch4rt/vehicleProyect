@@ -12,7 +12,9 @@ import javax.swing.JComponent;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import ni.uni.edu.programacion.Controllers.PnlVehicleController;
+import ni.uni.edu.programacion.Controllers.PnlVehicleShowController;
 import ni.uni.edu.programacion.views.panels.PnlVehicle;
+import ni.uni.edu.programacion.views.panels.PnlVehicleShowInfo;
 import org.rwshop.swing.animation.*;
 /**
  *
@@ -21,6 +23,8 @@ import org.rwshop.swing.animation.*;
 public class FrmVehicle extends javax.swing.JFrame {
     private PnlVehicle pnlVehicle;
     private PnlVehicleController pnlVehicleController;
+    private PnlVehicleShowController pnlVShowInfo;// controller para el panel PnlVehicleShowInfo;
+    private PnlVehicleShowInfo pnlVSInfo; // objeto tipo 
     /**
      * Creates new form FrmVehicle
      */
@@ -61,7 +65,6 @@ public class FrmVehicle extends javax.swing.JFrame {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         jPanel1.setPreferredSize(new java.awt.Dimension(915, 34));
 
-        btnMenu.setBackground(new java.awt.Color(51, 51, 51));
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/options.png"))); // NOI18N
         btnMenu.setColorHover(new java.awt.Color(102, 102, 102));
         btnMenu.setColorNormal(new java.awt.Color(102, 102, 102));
@@ -139,12 +142,17 @@ public class FrmVehicle extends javax.swing.JFrame {
         pnlMenu.add(btnDelete, gridBagConstraints);
 
         btnVisual.setBackground(new java.awt.Color(102, 102, 102));
-        btnVisual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Webp.net-resizeimage(1).png"))); // NOI18N
+        btnVisual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         btnVisual.setText("VER");
         btnVisual.setColorHover(new java.awt.Color(102, 102, 102));
         btnVisual.setColorNormal(new java.awt.Color(102, 102, 102));
         btnVisual.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnVisual.setIconTextGap(34);
+        btnVisual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -180,7 +188,6 @@ public class FrmVehicle extends javax.swing.JFrame {
         jPanel4.add(pnlMenu, gridBagConstraints);
 
         PnlCont.setBackground(new java.awt.Color(255, 255, 255));
-        PnlCont.setMaximumSize(new java.awt.Dimension(32767, 32767));
         PnlCont.setPreferredSize(new java.awt.Dimension(696, 598));
         PnlCont.setLayout(new java.awt.BorderLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -196,11 +203,11 @@ public class FrmVehicle extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
         );
 
         pack();
@@ -229,6 +236,23 @@ public class FrmVehicle extends javax.swing.JFrame {
         }
         addComponent(pnlVehicle);
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnVisualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualActionPerformed
+        // TODO add your handling code here:
+        if (pnlVSInfo == null)
+        {
+            pnlVSInfo = new PnlVehicleShowInfo();
+            //try
+            {
+                pnlVShowInfo = new PnlVehicleShowController(pnlVSInfo);
+            }
+            /*catch (FileNotFoundException ex) {
+                Logger.getLogger(FrmVehicle.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
+        }
+        
+        addComponent(pnlVSInfo);
+    }//GEN-LAST:event_btnVisualActionPerformed
     private void addComponent(JComponent component) {
         PnlCont.removeAll();        
         PnlCont.add(component, BorderLayout.CENTER);

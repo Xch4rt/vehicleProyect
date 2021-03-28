@@ -20,6 +20,7 @@ import javax.swing.DefaultComboBoxModel;
 import ni.edu.uni.programacion.backend.dao.implementation.JsonVehicleDaoImpl;
 import ni.edu.uni.programacion.backend.pojo.VehicleSubModel;
 import ni.uni.edu.programacion.views.panels.PnlVehicle;
+import ni.uni.edu.programacion.views.panels.PnlVehicleShowInfo;
 
 /**
  *
@@ -27,6 +28,7 @@ import ni.uni.edu.programacion.views.panels.PnlVehicle;
  */
 public class PnlVehicleController {
     private PnlVehicle pnlVehicle;
+    private PnlVehicleShowInfo pnlVShowInfo;
     private Gson gson;
     private JsonVehicleDaoImpl jvdao;
     private List<VehicleSubModel> vehicleSubModels;
@@ -41,6 +43,10 @@ public class PnlVehicleController {
         this.pnlVehicle = pnlVehicle;
         initComponent();
     }
+    /*public PnlVehicleController(PnlVehicleShowInfo pnlVShowInfo) throws FileNotFoundException {
+        this.pnlVShowInfo = pnlVShowInfo;
+        initComponent();
+    }*/
     
     private void initComponent() throws FileNotFoundException{
         jvdao = new JsonVehicleDaoImpl();
