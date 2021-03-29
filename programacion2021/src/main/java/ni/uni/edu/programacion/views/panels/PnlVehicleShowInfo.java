@@ -75,6 +75,7 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableInfo = new javax.swing.JTable();
+        jScrollBar1 = new javax.swing.JScrollBar();
         jPanel2 = new javax.swing.JPanel();
         CmbSearch = new javax.swing.JComboBox<>();
         jTextFieldSearch = new javax.swing.JTextField();
@@ -88,19 +89,29 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
 
         TableInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Stock", "Year", "Make", "Model", "Style", "VIN", "Exterior color", "Interior color", "MIles", "Price", "Transmission", "Engine"
+                "N° Record", "Stock number", "Year", "Make", "Model", "Style", "VIN", "Exterior color", "Interior color", "Kiles", "Price", "Transmission", "Engine", "Path Image", "Status"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         TableInfo.setRowHeight(30);
         jScrollPane1.setViewportView(TableInfo);
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jPanel1.add(jScrollBar1, java.awt.BorderLayout.PAGE_END);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -187,6 +198,7 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
     private rsbuttom.RSButtonMetro btnShowAll;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldSearch;
     // End of variables declaration//GEN-END:variables
