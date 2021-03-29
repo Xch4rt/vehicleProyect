@@ -24,7 +24,7 @@ public class Vehicle {
     private String engine;//50
     private String image;//100
     private String status;//20
-    private int records;//4
+    //private int records;//4
     
     public enum Transmission{
         AUTOMATIC, MANUAL
@@ -79,13 +79,13 @@ public class Vehicle {
         this.status = status;
     }
 
-    public int getRecords() {
-        return records;
-    }
-
-    public void setRecords(int records) {
-        this.records = records;
-    }
+//    public int getRecords() {
+//        return records;
+//    }
+//
+//    public void setRecords(int records) {
+//        this.records = records;
+//    }
     
     
 

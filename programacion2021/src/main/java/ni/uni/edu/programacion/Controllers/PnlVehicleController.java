@@ -8,7 +8,12 @@ package ni.uni.edu.programacion.Controllers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,6 +29,8 @@ import java.util.stream.Collectors;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import ni.edu.uni.programacion.backend.dao.implementation.JsonVehicleDaoImpl;
 import ni.edu.uni.programacion.backend.pojo.Vehicle;
 import ni.edu.uni.programacion.backend.pojo.VehicleSubModel;
@@ -32,7 +39,7 @@ import ni.uni.edu.programacion.views.panels.PnlVehicleShowInfo;
 
 /**
  *
- * @author Sistemas-05
+ * @author Pablo
  */
 public class PnlVehicleController {
     private PnlVehicle pnlVehicle;
@@ -47,17 +54,19 @@ public class PnlVehicleController {
     private DefaultComboBoxModel cmbModelIColor;
     private DefaultComboBoxModel cmbStatus;
     private JFileChooser fileChooser;
+    private Border stockBorder;
     
     public PnlVehicleController(PnlVehicle pnlVehicle) throws FileNotFoundException {
         this.pnlVehicle = pnlVehicle;
         initComponent();
     }
-    /*public PnlVehicleController(PnlVehicleShowInfo pnlVShowInfo) throws FileNotFoundException {
+    
+    public PnlVehicleController(PnlVehicleShowInfo pnlVShowInfo) throws FileNotFoundException {
         this.pnlVShowInfo = pnlVShowInfo;
         initComponent();
-    }*/
+    }
     
-    private void initComponent() throws FileNotFoundException{
+    private void initComponent() throws FileNotFoundException {
         jvdao = new JsonVehicleDaoImpl();
         gson = new Gson();
         
@@ -70,12 +79,18 @@ public class PnlVehicleController {
         
         vehicleSubModels = gson.fromJson(jreader,listType);
         
-        Set<String> makes = vehicleSubModels.stream().map(x -> x.getMake()).collect(Collectors.toSet());
-        List<String> models = vehicleSubModels.stream().map(x -> x.getModel()).collect(Collectors.toList());
-        Set<String> years = vehicleSubModels.stream().map(x -> x.getYear()).collect(Collectors.toSet());
-        Set<String> colors = vehicleSubModels.stream().map(x -> x.getColor()).collect(Collectors.toSet());
-        Set<String> status = vehicleSubModels.stream().map(x -> x.getStatus()).collect(Collectors.toSet());
+         Set<String> makes = vehicleSubModels.stream()
+                .map(VehicleSubModel::getMake).sorted().collect(Collectors.toSet());
+        Set<String> models = vehicleSubModels.stream()
+                .map(VehicleSubModel::getModel).sorted().collect(Collectors.toSet());
+        Set<String> colors = vehicleSubModels.stream()
+                .map(VehicleSubModel::getColor).sorted().collect(Collectors.toSet());
+        Set<String> years = vehicleSubModels.stream()
+                .map(VehicleSubModel::getYear).sorted().collect(Collectors.toSet());
+        Set<String> status = vehicleSubModels.stream()
+                .map(VehicleSubModel::getStatus).sorted().collect(Collectors.toSet());
         
+
         cmbModelMake = new DefaultComboBoxModel(makes.toArray());
         cmbModelModel = new DefaultComboBoxModel(models.toArray());
         cmbModelYear = new DefaultComboBoxModel(years.toArray());
@@ -90,24 +105,32 @@ public class PnlVehicleController {
         pnlVehicle.getCmbIColor().setModel(cmbModelIColor);
         pnlVehicle.getCmbStatus().setModel(cmbStatus);
         
-        pnlVehicle.getTxtStock().requestFocus();
+        //pnlVehicle.getTxtStock().requestFocus();
         
         pnlVehicle.getBtnBrowse().addActionListener((e)->{
             btnBrowseActionListener(e);
         });
         
         pnlVehicle.getBtnSave().addActionListener((e)->{
-            btnSaveActionListener(e);
+            try {
+                btnSaveActionListener(e);
+            } catch (Exception ex) {
+                Logger.getLogger(PnlVehicleController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
+        
+
     }
     
-    private void btnSaveActionListener(ActionEvent e){
+    private void btnSaveActionListener(ActionEvent e) throws Exception{
         int stock, year;
         String make, model, style, vin, eColor, iColor, miles, engine, image, status;
         float price;
         Vehicle.Transmission transmission = Vehicle.Transmission.AUTOMATIC;
         
         if(pnlVehicle.getTxtStock().getText().isEmpty()){
+             JOptionPane.showMessageDialog(null, "Stock number can not be empty", 
+                    "Error message", JOptionPane.ERROR_MESSAGE);
             return;
         }
         stock = Integer.parseInt(pnlVehicle.getTxtStock().getText());
@@ -129,16 +152,12 @@ public class PnlVehicleController {
         Vehicle v = new Vehicle(stock, year, make, model, 
                 style, vin, eColor, iColor, miles, price, transmission, engine, image, status);
         
-        try {
+        
             jvdao.create(v);
             JOptionPane.showMessageDialog(null, "Vehicle saved successfully.", 
                     "Information message", JOptionPane.INFORMATION_MESSAGE);
             
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), 
-                    "Error message", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(PnlVehicleController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
     
     private void btnBrowseActionListener(ActionEvent e){
@@ -158,4 +177,6 @@ public class PnlVehicleController {
         
         pnlVehicle.getTxtImage().setText(file.getPath());        
     }
+    
+    
 } 

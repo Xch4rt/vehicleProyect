@@ -6,6 +6,7 @@
 package ni.uni.edu.programacion.views;
 import java.awt.BorderLayout;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
@@ -142,7 +143,7 @@ public class FrmVehicle extends javax.swing.JFrame {
         pnlMenu.add(btnDelete, gridBagConstraints);
 
         btnVisual.setBackground(new java.awt.Color(102, 102, 102));
-        btnVisual.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pablo\\Desktop\\vehicleProyect\\vehicleProyect\\programacion2021\\src\\main\\resources\\images\\find.png")); // NOI18N
+        btnVisual.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariel\\Documents\\Ariel\\Programacion 2\\1era evaluacion\\vehicleProyect\\programacion2021\\src\\main\\resources\\images\\find.png")); // NOI18N
         btnVisual.setText("VER");
         btnVisual.setColorHover(new java.awt.Color(102, 102, 102));
         btnVisual.setColorNormal(new java.awt.Color(102, 102, 102));
@@ -244,7 +245,11 @@ public class FrmVehicle extends javax.swing.JFrame {
             pnlVSInfo = new PnlVehicleShowInfo();
             //try
             {
-            pnlVShowInfo = new PnlVehicleShowController(pnlVSInfo);
+                try {
+                    pnlVShowInfo = new PnlVehicleShowController(pnlVSInfo);
+                } catch (IOException ex) {
+                    Logger.getLogger(FrmVehicle.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             /*catch (FileNotFoundException ex) {
                 Logger.getLogger(FrmVehicle.class.getName()).log(Level.SEVERE, null, ex);

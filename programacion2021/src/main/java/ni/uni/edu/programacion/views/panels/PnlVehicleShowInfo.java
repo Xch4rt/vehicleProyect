@@ -71,6 +71,8 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         this.TextSearch = TextSearch;
     }
     
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -149,6 +151,7 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
 
         btnShowAll.setBackground(new java.awt.Color(204, 204, 204));
         btnShowAll.setForeground(new java.awt.Color(0, 0, 0));
+        btnShowAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
         btnShowAll.setText("Mostrar Todo");
         btnShowAll.setColorHover(new java.awt.Color(153, 153, 153));
         btnShowAll.setColorNormal(new java.awt.Color(204, 204, 204));

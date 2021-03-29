@@ -11,6 +11,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,30 +33,22 @@ public class PnlVehicleShowController {
     // para el cmbList
     private final String PROPIERTIES[] = new String[]{"Nº Record","Stock number","Year", "Make", "Model", "Style", "VIN", "Exterior color", "Interior color", "Miles", "Price", "Transmission", "Engine",
     "IMAGE","STATUS"};
-    private DefaultComboBoxModel<String> cmbFmodel;
-    private DefaultTableModel model, model1;
-    private List<Vehicle> list;
+    private DefaultTableModel model;
     private Gson gson;
     private JsonVehicleDaoImpl jvdao;
-    private List<VehicleSubModel> vehicleSubModels;
+    private List<Vehicle> list= new ArrayList<Vehicle>();
     
     
-    public PnlVehicleShowController(PnlVehicleShowInfo pnlVShowInfo) {
+    public PnlVehicleShowController(PnlVehicleShowInfo pnlVShowInfo) throws IOException {
         this.pnlVShowInfo = pnlVShowInfo;
-        try {
-            initComponent();
-        } catch (IOException ex) {
-            Logger.getLogger(PnlVehicleShowController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        initComponent();
+       
     }
     
     private void initComponent() throws FileNotFoundException, IOException 
     {
         model = (DefaultTableModel) pnlVShowInfo.getTableInfo().getModel();
         jvdao = new JsonVehicleDaoImpl();
-        if(jvdao.getAll().isEmpty()){
-            return;
-        }
         
         pnlVShowInfo.getBtnShowAll().addActionListener((e) ->{
             try {
@@ -67,11 +60,13 @@ public class PnlVehicleShowController {
         // Obtener info desde el jtextfield
         pnlVShowInfo.getTextSearch().addKeyListener(new KeyAdapter()
         {
-            public void KeyR(final KeyEvent e)
+            public void keyReleased(final KeyEvent e)
             {
                 TableRowSorter TFilter = new TableRowSorter(pnlVShowInfo.getTableInfo().getModel());
                 String s = pnlVShowInfo.getTextSearch().getText();
+                
                 pnlVShowInfo.getTextSearch().setText(s);
+                
                 FilterTabe(pnlVShowInfo.getCmbSearch().getSelectedIndex(), TFilter);
             }
         });
@@ -97,7 +92,7 @@ public class PnlVehicleShowController {
 
         for (int i = 0; i < list.size(); i++) 
         {
-            pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getRecords(), i, 0);
+            pnlVShowInfo.getTableInfo().setValueAt((i + 1), i, 0);
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getStockNumber(), i, 1);
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getYear(), i, 2);
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getMake(), i, 3);
@@ -110,7 +105,8 @@ public class PnlVehicleShowController {
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getPrice(), i, 10);
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getTransmission().toString(), i, 11);
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getEngine(), i, 12);
-            pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getStatus(), i, 13);
+            pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getImage(), i, 13);
+             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getStatus(), i, 14);
         }
         pnlVShowInfo.getBtnShowAll().setText("Mostrar Todo");
     }

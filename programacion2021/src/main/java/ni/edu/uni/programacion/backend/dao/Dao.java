@@ -18,5 +18,5 @@ public interface Dao<T> {
     void create(T t) throws IOException;
     int update(T t) throws IOException;
     boolean delete(T t) throws IOException; 
-    List<T> getAll() throws IOException;
+    Collection<T> getAll() throws IOException;
 }
