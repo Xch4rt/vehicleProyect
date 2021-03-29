@@ -23,9 +23,9 @@ import ni.uni.edu.programacion.views.panels.PnlVehicleShowInfo;
 public class PnlVehicleShowController {
     private PnlVehicleShowInfo pnlVShowInfo;
     // para el cmbList
-    private final String PROPIERTIES[] = new String[]{"YEAR", "MAKE", "MODEL", "STYLE", "VIN", "EXTERIOR COLOR", "INTERIOR COLOR", "MILES", "PRICE", "TRANSMISSION", "ENGINE"};
+    private final String PROPIERTIES[] = new String[]{"STOCK","YEAR", "MAKE", "MODEL", "STYLE", "VIN", "EXTERIOR COLOR", "INTERIOR COLOR", "MILES", "PRICE", "TRANSMISSION", "ENGINE"};
     private DefaultComboBoxModel<String> cmbFmodel;
-    
+    private List<Vehicle> list;
     private Gson gson;
     private JsonVehicleDaoImpl jvdao;
     private List<VehicleSubModel> vehicleSubModels;
@@ -58,12 +58,9 @@ public class PnlVehicleShowController {
     private void btnShowAllActionListener(ActionEvent e) throws IOException
     {
         // Creamos una lista con los objetos json casteandolos a lista tipo vehicle
-        List<Vehicle> list = (List<Vehicle>) jvdao.getAll();
+        list = (List<Vehicle>) jvdao.getAll();
         
-        for (Vehicle vehicle : list)
-        {
-            System.out.println(e);
-        }
+
         for (int i = 0; i < list.size(); i++) 
         {
             pnlVShowInfo.getTableInfo().setValueAt((i + 1), i, 0);
@@ -80,7 +77,7 @@ public class PnlVehicleShowController {
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getTransmission().toString(), i, 11);
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getEngine(), i, 12);
             //pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getMake(), i, 13);
-            pnlVShowInfo.getTableInfo().setValueAt(null, i, 14);
+            pnlVShowInfo.getTableInfo().setValueAt(null, i, 13);
         }
     }
 }

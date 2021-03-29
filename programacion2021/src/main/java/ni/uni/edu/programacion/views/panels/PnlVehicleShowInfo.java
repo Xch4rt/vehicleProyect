@@ -88,13 +88,13 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
 
         TableInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Year", "Make", "Model", "Style", "VIN", "Exterior color", "Interior color", "MIles", "Price", "Transmission", "Engine"
+                "Stock", "Year", "Make", "Model", "Style", "VIN", "Exterior color", "Interior color", "MIles", "Price", "Transmission", "Engine"
             }
         ));
         TableInfo.setRowHeight(30);
