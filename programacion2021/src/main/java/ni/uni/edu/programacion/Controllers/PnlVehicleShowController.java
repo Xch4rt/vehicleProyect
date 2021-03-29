@@ -7,13 +7,17 @@ package ni.uni.edu.programacion.Controllers;
 
 import com.google.gson.Gson;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import ni.edu.uni.programacion.backend.dao.implementation.JsonVehicleDaoImpl;
 import ni.edu.uni.programacion.backend.pojo.Vehicle;
 import ni.edu.uni.programacion.backend.pojo.VehicleSubModel;
@@ -82,17 +86,22 @@ public class PnlVehicleShowController {
         
         pnlVShowInfo.getCmbSearch().setModel(cmbFmodel);
         
-//        pnlVShowInfo.getBtnShowAll().addActionListener((e) ->{
-//            try
-//            {
-//                btnShowAllActionListener(e);
-//            }
-//            catch (IOException ex)
-//            {
-//                
-//            }
-//        });
+        pnlVShowInfo.getTextSearch().addKeyListener(new KeyAdapter()
+        {
+            public void KeyR(final KeyEvent e)
+            {
+                TableRowSorter TFilter = new TableRowSorter(pnlVShowInfo.getTableInfo().getModel());
+                String s = pnlVShowInfo.getTextSearch().getText();
+
+                FilterTabe(pnlVShowInfo.getCmbSearch().getSelectedIndex(), TFilter);
+            }
+        });
     }
+    private void FilterTabe(int a, TableRowSorter filter)
+    {
+        filter.setRowFilter(RowFilter.regexFilter(pnlVShowInfo.getTextSearch().getText(), a));
+        pnlVShowInfo.getTableInfo().setRowSorter(filter);
+    } 
 //    private void btnShowAllActionListener(ActionEvent e) throws IOException
 //    {
 //        // Creamos una lista con los objetos json casteandolos a lista tipo vehicle
