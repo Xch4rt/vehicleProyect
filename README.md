@@ -1,2 +1,2 @@
 # vehicleProyect
-Integrandes: Ariel Adolfo Reyes Silva, Pablo Andrés Gutiérrez Almendárez.
+Integrantes: Ariel Adolfo Reyes Silva, Pablo Andrés Gutiérrez Almendárez.
