@@ -20,7 +20,7 @@ import ni.edu.uni.programacion.backend.pojo.Vehicle;
  * @author yasser.membreno
  */
 public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
-    private final int SIZE = 800;    
+    private final int SIZE = 900;    
     private Gson gson;    
     
     public JsonVehicleDaoImpl() throws FileNotFoundException {
@@ -50,6 +50,7 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
         getCustomRandom().getRafD().seek(posD);
         
         getCustomRandom().getRafD().writeInt(++k);//id
+        t.setRecords(k);
         getCustomRandom().getRafD().writeUTF(gson.toJson(t));//Vehicle json
         
         long posH = 8 + (n*8);
@@ -77,7 +78,7 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
     }
 
     @Override
-    public Collection<Vehicle> getAll() throws IOException {
+    public List<Vehicle> getAll() throws IOException {
         List<Vehicle> vehicles = new ArrayList<>();
         Vehicle vehicle = null;
         

@@ -24,6 +24,7 @@ public class Vehicle {
     private String engine;//50
     private String image;//100
     private String status;//20
+    private int records;//4
     
     public enum Transmission{
         AUTOMATIC, MANUAL
@@ -69,6 +70,24 @@ public class Vehicle {
     public int getYear() {
         return year;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getRecords() {
+        return records;
+    }
+
+    public void setRecords(int records) {
+        this.records = records;
+    }
+    
+    
 
     public void setYear(int year) {
         this.year = year;

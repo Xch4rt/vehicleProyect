@@ -62,7 +62,7 @@ public class FrmVehicle extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setPreferredSize(new java.awt.Dimension(915, 34));
 
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/options.png"))); // NOI18N
@@ -106,7 +106,7 @@ public class FrmVehicle extends javax.swing.JFrame {
         pnlMenu.setLayout(new java.awt.GridBagLayout());
 
         btnNew.setBackground(new java.awt.Color(102, 102, 102));
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/car.png"))); // NOI18N
+        btnNew.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariel\\Documents\\Ariel\\Programacion 2\\Primera evaluacion\\vehicleProyect\\programacion2021\\src\\main\\resources\\images\\car.png")); // NOI18N
         btnNew.setText("NUEVO");
         btnNew.setColorHover(new java.awt.Color(102, 102, 102));
         btnNew.setColorNormal(new java.awt.Color(102, 102, 102));
@@ -126,7 +126,7 @@ public class FrmVehicle extends javax.swing.JFrame {
         pnlMenu.add(btnNew, gridBagConstraints);
 
         btnDelete.setBackground(new java.awt.Color(102, 102, 102));
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariel\\Documents\\Ariel\\Programacion 2\\Primera evaluacion\\vehicleProyect\\programacion2021\\src\\main\\resources\\images\\delete.png")); // NOI18N
         btnDelete.setText("ELIMINAR");
         btnDelete.setColorHover(new java.awt.Color(102, 102, 102));
         btnDelete.setColorNormal(new java.awt.Color(102, 102, 102));
@@ -142,7 +142,7 @@ public class FrmVehicle extends javax.swing.JFrame {
         pnlMenu.add(btnDelete, gridBagConstraints);
 
         btnVisual.setBackground(new java.awt.Color(102, 102, 102));
-        btnVisual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
+        btnVisual.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariel\\Documents\\Ariel\\Programacion 2\\Primera evaluacion\\vehicleProyect\\programacion2021\\src\\main\\resources\\images\\find.png")); // NOI18N
         btnVisual.setText("VER");
         btnVisual.setColorHover(new java.awt.Color(102, 102, 102));
         btnVisual.setColorNormal(new java.awt.Color(102, 102, 102));
@@ -163,7 +163,7 @@ public class FrmVehicle extends javax.swing.JFrame {
         pnlMenu.add(btnVisual, gridBagConstraints);
 
         btnUpdate.setBackground(new java.awt.Color(102, 102, 102));
-        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
+        btnUpdate.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariel\\Documents\\Ariel\\Programacion 2\\Primera evaluacion\\vehicleProyect\\programacion2021\\src\\main\\resources\\images\\update.png")); // NOI18N
         btnUpdate.setText("ACTUALIZAR");
         btnUpdate.setColorHover(new java.awt.Color(102, 102, 102));
         btnUpdate.setColorNormal(new java.awt.Color(102, 102, 102));
@@ -203,7 +203,7 @@ public class FrmVehicle extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,11 +244,7 @@ public class FrmVehicle extends javax.swing.JFrame {
             pnlVSInfo = new PnlVehicleShowInfo();
             //try
             {
-                try {
-                    pnlVShowInfo = new PnlVehicleShowController(pnlVSInfo);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(FrmVehicle.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            pnlVShowInfo = new PnlVehicleShowController(pnlVSInfo);
             }
             /*catch (FileNotFoundException ex) {
                 Logger.getLogger(FrmVehicle.class.getName()).log(Level.SEVERE, null, ex);

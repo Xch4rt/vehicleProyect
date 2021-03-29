@@ -7,6 +7,7 @@ package ni.edu.uni.programacion.backend.dao;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -17,5 +18,5 @@ public interface Dao<T> {
     void create(T t) throws IOException;
     int update(T t) throws IOException;
     boolean delete(T t) throws IOException; 
-    Collection<T> getAll() throws IOException;
+    List<T> getAll() throws IOException;
 }

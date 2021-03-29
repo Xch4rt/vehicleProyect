@@ -129,7 +129,7 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         });
 
         btnSearch.setBackground(new java.awt.Color(204, 204, 204));
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariel\\Documents\\Ariel\\Programacion 2\\Primera evaluacion\\vehicleProyect\\programacion2021\\src\\main\\resources\\images\\search.png")); // NOI18N
         btnSearch.setColorHover(new java.awt.Color(153, 153, 153));
         btnSearch.setColorNormal(new java.awt.Color(204, 204, 204));
         btnSearch.setColorPressed(new java.awt.Color(153, 153, 153));
@@ -141,7 +141,7 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
 
         btnShowAll.setBackground(new java.awt.Color(204, 204, 204));
         btnShowAll.setForeground(new java.awt.Color(0, 0, 0));
-        btnShowAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.png"))); // NOI18N
+        btnShowAll.setIcon(new javax.swing.ImageIcon("C:\\Users\\ariel\\Documents\\Ariel\\Programacion 2\\Primera evaluacion\\vehicleProyect\\programacion2021\\src\\main\\resources\\images\\find.png")); // NOI18N
         btnShowAll.setText("Mostrar Todo");
         btnShowAll.setColorHover(new java.awt.Color(153, 153, 153));
         btnShowAll.setColorNormal(new java.awt.Color(204, 204, 204));
