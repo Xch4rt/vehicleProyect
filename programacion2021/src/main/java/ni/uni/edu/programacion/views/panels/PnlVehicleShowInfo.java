@@ -104,7 +104,7 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "N° Record", "Stock number", "Year", "Make", "Model", "Style", "VIN", "Exterior color", "Interior color", "Kiles", "Price", "Transmission", "Engine", "Path Image", "Status"
+                "N° Record", "Stock number", "Year", "Make", "Model", "Style", "VIN", "Exterior color", "Interior color", "Miles", "Price", "Transmission", "Engine", "Path Image", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -126,6 +126,7 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         CmbSearch.setBackground(new java.awt.Color(204, 204, 204));
+        CmbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nº Records", "Stock Number", "Year", "Make", "Model", "Style", "VIN", "Exterior Color", "Interior Color", "Miles", "Price", "Transmission", "Engine", "Imagen Path", "Status" }));
 
         TextSearch.setBackground(new java.awt.Color(204, 204, 204));
         TextSearch.setForeground(new java.awt.Color(102, 102, 102));
@@ -152,6 +153,11 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         btnShowAll.setColorHover(new java.awt.Color(153, 153, 153));
         btnShowAll.setColorNormal(new java.awt.Color(204, 204, 204));
         btnShowAll.setColorPressed(new java.awt.Color(102, 102, 102));
+        btnShowAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowAllActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -195,6 +201,10 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         // TODO add your handling code here:
         // Evento de para buscar el elemeento
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnShowAllActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

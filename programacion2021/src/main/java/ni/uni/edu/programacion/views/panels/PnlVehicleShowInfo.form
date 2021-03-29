@@ -55,7 +55,7 @@
                     <Column editable="true" title="VIN" type="java.lang.String"/>
                     <Column editable="true" title="Exterior color" type="java.lang.String"/>
                     <Column editable="true" title="Interior color" type="java.lang.String"/>
-                    <Column editable="true" title="Kiles" type="java.lang.String"/>
+                    <Column editable="true" title="Miles" type="java.lang.String"/>
                     <Column editable="true" title="Price" type="java.lang.Float"/>
                     <Column editable="true" title="Transmission" type="java.lang.Object"/>
                     <Column editable="true" title="Engine" type="java.lang.String"/>
@@ -216,7 +216,23 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="15">
+                <StringItem index="0" value="N&#xba; Records"/>
+                <StringItem index="1" value="Stock Number"/>
+                <StringItem index="2" value="Year"/>
+                <StringItem index="3" value="Make"/>
+                <StringItem index="4" value="Model"/>
+                <StringItem index="5" value="Style"/>
+                <StringItem index="6" value="VIN"/>
+                <StringItem index="7" value="Exterior Color"/>
+                <StringItem index="8" value="Interior Color"/>
+                <StringItem index="9" value="Miles"/>
+                <StringItem index="10" value="Price"/>
+                <StringItem index="11" value="Transmission"/>
+                <StringItem index="12" value="Engine"/>
+                <StringItem index="13" value="Imagen Path"/>
+                <StringItem index="14" value="Status"/>
+              </StringArray>
             </Property>
           </Properties>
           <AuxValues>
@@ -279,6 +295,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowAllActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
